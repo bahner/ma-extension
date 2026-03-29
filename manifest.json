@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "間 Kubo Bridge",
+  "version": "0.2.5",
+  "description": "Bridge MA web app requests to local Kubo API without page-origin CORS failures.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:5001/*",
+    "http://localhost:5001/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "kubo_origin_fix",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://localhost/*",
+        "*://127.0.0.1/*",
+        "*://*.ipns.localhost/*",
+        "*://*.ipfs.localhost/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "間 Kubo Bridge"
+  }
+}

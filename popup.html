@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>間 Kubo Bridge</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 12px;
+      width: 280px;
+      font-family: "Segoe UI", sans-serif;
+      color: #1f2933;
+      background: #f6f7f9;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 15px;
+    }
+    p {
+      margin: 6px 0;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    code {
+      background: #e8edf3;
+      border-radius: 4px;
+      padding: 1px 4px;
+      font-size: 11px;
+    }
+    #status {
+      margin-top: 8px;
+      padding: 8px;
+      border-radius: 6px;
+      background: #dde9ff;
+      font-size: 12px;
+    }
+    #selftest {
+      margin-top: 8px;
+      width: 100%;
+      padding: 8px 10px;
+      border: 0;
+      border-radius: 6px;
+      background: #196d5f;
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 8px;
+      padding: 8px;
+      border-radius: 6px;
+      background: #eef3e6;
+      font-size: 12px;
+    }
+    #fix {
+      margin-top: 8px;
+      padding: 8px;
+      border-radius: 6px;
+      background: #fff2d8;
+      font-size: 12px;
+    }
+    #fix code {
+      display: block;
+      margin-top: 6px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    #copyfix {
+      margin-top: 8px;
+      width: 100%;
+      padding: 8px 10px;
+      border: 0;
+      border-radius: 6px;
+      background: #2f4f89;
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>間 Kubo Bridge</h1>
+  <p>This extension proxies MA app API calls to local Kubo.</p>
+  <p>Expected Kubo API: <code>http://127.0.0.1:5001</code></p>
+  <p>Extension origin: <code id="extorigin">(loading...)</code></p>
+  <div id="status">Checking active tab...</div>
+  <button id="selftest" type="button">Run Kubo Self-Test</button>
+  <div id="result">Self-test not run yet.</div>
+  <div id="fix">
+    If self-test returns 403, add extension origin to Kubo allow-origin:
+    <code id="fixcmd">(loading command...)</code>
+    <button id="copyfix" type="button">Copy Fix Command</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

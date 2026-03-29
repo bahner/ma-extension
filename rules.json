@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "origin",
+          "operation": "set",
+          "value": "http://127.0.0.1:5001"
+        }
+      ]
+    },
+    "condition": {
+      "urlFilter": "||127.0.0.1:5001/api/v0/",
+      "resourceTypes": [
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "origin",
+          "operation": "set",
+          "value": "http://localhost:5001"
+        }
+      ]
+    },
+    "condition": {
+      "urlFilter": "||localhost:5001/api/v0/",
+      "resourceTypes": [
+        "xmlhttprequest"
+      ]
+    }
+  }
+]
