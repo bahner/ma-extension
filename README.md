@@ -1,6 +1,6 @@
 # ma-extension
 
-Browser extension bridge for `ma-home` to access local Kubo API without page-origin CORS failures.
+Browser extension bridge for `ma-actor` to access local Kubo API without page-origin CORS failures.
 
 ## What it does
 
