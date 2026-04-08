@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>間 Kubo Bridge</title>
+  <title>間 IPFS Bridge</title>
   <style>
     body {
       margin: 0;
@@ -80,15 +80,15 @@
   </style>
 </head>
 <body>
-  <h1>間 Kubo Bridge</h1>
-  <p>This extension proxies MA app API calls to local Kubo.</p>
-  <p>Expected Kubo API: <code>http://127.0.0.1:5001</code></p>
+  <h1>間 IPFS Bridge</h1>
+  <p>This extension proxies MA app API calls to local IPFS HTTP API.</p>
+  <p>Expected IPFS API: <code>http://127.0.0.1:5001</code></p>
   <p>Extension origin: <code id="extorigin">(loading...)</code></p>
   <div id="status">Checking active tab...</div>
-  <button id="selftest" type="button">Run Kubo Self-Test</button>
+  <button id="selftest" type="button">Run IPFS Self-Test</button>
   <div id="result">Self-test not run yet.</div>
   <div id="fix">
-    If self-test returns 403, add extension origin to Kubo allow-origin:
+    If self-test returns 403, add extension origin to IPFS allow-origin:
     <code id="fixcmd">(loading command...)</code>
     <button id="copyfix" type="button">Copy Fix Command</button>
   </div>

@@ -1,6 +1,6 @@
 # ma-extension
 
-Browser extension bridge for `ma-actor` to access local Kubo API without page-origin CORS failures.
+Browser extension bridge for `ma-actor` to access local IPFS API without page-origin CORS failures.
 
 ## What it does
 
@@ -9,7 +9,7 @@ Browser extension bridge for `ma-actor` to access local Kubo API without page-or
   - `http://127.0.0.1:5001`
   - `http://localhost:5001`
 - Returns JSON response back to page
-- Applies a request-header rewrite rule for extension-origin API calls so Kubo does not reject `chrome-extension://` origins on strict setups.
+- Applies a request-header rewrite rule for extension-origin API calls so IPFS API does not reject `chrome-extension://` origins on strict setups.
 
 ## What it cannot do
 
@@ -41,10 +41,10 @@ Note: Firefox temporary add-ons are removed on browser restart unless fully pack
   - localhost/127.0.0.1
   - `*.ipns.localhost`
   - `*.ipfs.localhost`
-- Allowed Kubo API bases:
+- Allowed IPFS API bases:
   - `http://127.0.0.1:5001`
   - `http://localhost:5001`
-- Allowed Kubo API paths only:
+- Allowed IPFS API paths only:
   - `/api/v0/key/list`
   - `/api/v0/key/gen`
   - `/api/v0/name/publish`
@@ -68,8 +68,8 @@ After editing files, reload the extension in your browser extension page.
 
 1. Open extension popup.
 2. Confirm active tab URL is shown.
-3. Click Run Kubo Self-Test.
+3. Click Run IPFS Self-Test.
 4. Expect: Self-test OK with key count.
 
-If self-test returns `403`, add the extension origin (`chrome-extension://<extension-id>`) to `API.HTTPHeaders.Access-Control-Allow-Origin` in Kubo config.
+If self-test returns `403`, add the extension origin (`chrome-extension://<extension-id>`) to `API.HTTPHeaders.Access-Control-Allow-Origin` in IPFS config.
 The popup includes a ready-to-copy `ipfs config --json ...` command for this.

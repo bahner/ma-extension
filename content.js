@@ -1,7 +1,7 @@
 (() => {
-  const BRIDGE_REQUEST = 'MA_KUBO_BRIDGE_REQUEST';
-  const BRIDGE_RESPONSE = 'MA_KUBO_BRIDGE_RESPONSE';
-  const BRIDGE_READY = 'MA_KUBO_BRIDGE_READY';
+  const BRIDGE_REQUEST = 'MA_IPFS_BRIDGE_REQUEST';
+  const BRIDGE_RESPONSE = 'MA_IPFS_BRIDGE_RESPONSE';
+  const BRIDGE_READY = 'MA_IPFS_BRIDGE_READY';
   const RUNTIME_RESPONSE_TIMEOUT_MS = 3500;
   const api = typeof browser !== 'undefined' ? browser : chrome;
 
@@ -46,7 +46,7 @@
 
     try {
       api.runtime.sendMessage({
-        type: 'MA_KUBO_PROXY',
+        type: 'MA_IPFS_PROXY',
         payload: {
           ...(data.payload || {}),
           pageOrigin: window.location.origin

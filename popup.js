@@ -45,12 +45,12 @@ async function main() {
     selftestBtn.disabled = true;
     result.textContent = 'Running self-test...';
     try {
-      const response = await sendRuntimeMessage({ type: 'MA_KUBO_SELF_TEST' });
+      const response = await sendRuntimeMessage({ type: 'MA_IPFS_SELF_TEST' });
       if (!response?.ok) {
         throw new Error(response?.error || 'self-test failed');
       }
       const keyCount = Number(response?.result?.keyCount || 0);
-      result.textContent = `Self-test OK. Kubo reachable. Keys: ${keyCount}.`;
+      result.textContent = `Self-test OK. IPFS API reachable. Keys: ${keyCount}.`;
     } catch (error) {
       result.textContent = `Self-test failed: ${String(error?.message || error)}`;
     } finally {
@@ -61,7 +61,7 @@ async function main() {
   copyFixBtn.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(fixCommand);
-      result.textContent = 'Fix command copied. Run it in terminal, restart Kubo/IPFS Desktop, then self-test again.';
+      result.textContent = 'Fix command copied. Run it in terminal, restart IPFS/IPFS Desktop, then self-test again.';
     } catch (error) {
       result.textContent = `Could not copy command: ${String(error?.message || error)}`;
     }

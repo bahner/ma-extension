@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "間 Kubo Bridge",
+  "name": "間 IPFS Bridge",
   "version": "0.2.5",
-  "description": "Bridge MA web app requests to local Kubo API without page-origin CORS failures.",
+  "description": "Bridge MA web app requests to local IPFS API without page-origin CORS failures.",
   "permissions": [
     "storage",
     "tabs",
@@ -19,7 +19,7 @@
   "declarative_net_request": {
     "rule_resources": [
       {
-        "id": "kubo_origin_fix",
+        "id": "ipfs_origin_fix",
         "enabled": true,
         "path": "rules.json"
       }
@@ -41,6 +41,6 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "間 Kubo Bridge"
+    "default_title": "間 IPFS Bridge"
   }
 }

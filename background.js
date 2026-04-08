@@ -212,7 +212,7 @@ async function handleProxyRequest(message, sender) {
   const text = await response.text();
 
   if (!response.ok) {
-    throw new Error(`Kubo API ${response.status}: ${text || response.statusText}`);
+    throw new Error(`IPFS API ${response.status}: ${text || response.statusText}`);
   }
 
   if (path === '/api/v0/cat') {
@@ -222,7 +222,7 @@ async function handleProxyRequest(message, sender) {
   try {
     return JSON.parse(text);
   } catch (_) {
-    throw new Error(`Kubo API returned non-JSON response: ${text || '(empty body)'}`);
+    throw new Error(`IPFS API returned non-JSON response: ${text || '(empty body)'}`);
   }
 }
 
@@ -231,20 +231,20 @@ async function handleSelfTest() {
   const response = await fetch(url, { method: 'POST' });
   const text = await response.text();
   if (!response.ok) {
-    throw new Error(`Self-test failed: Kubo API ${response.status}: ${text || response.statusText}`);
+    throw new Error(`Self-test failed: IPFS API ${response.status}: ${text || response.statusText}`);
   }
   let parsed;
   try {
     parsed = JSON.parse(text);
   } catch (_) {
-    throw new Error('Self-test failed: non-JSON response from Kubo API.');
+    throw new Error('Self-test failed: non-JSON response from IPFS API.');
   }
   const keyCount = Array.isArray(parsed?.Keys) ? parsed.Keys.length : 0;
   return { keyCount };
 }
 
 api.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message?.type === 'MA_KUBO_PROXY') {
+  if (message?.type === 'MA_IPFS_PROXY') {
     handleProxyRequest(message, sender)
       .then((result) => sendResponse({ ok: true, result }))
       .catch((error) => sendResponse({ ok: false, error: String(error?.message || error) }));
@@ -252,7 +252,7 @@ api.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return true;
   }
 
-  if (message?.type === 'MA_KUBO_SELF_TEST') {
+  if (message?.type === 'MA_IPFS_SELF_TEST') {
     handleSelfTest()
       .then((result) => sendResponse({ ok: true, result }))
       .catch((error) => sendResponse({ ok: false, error: String(error?.message || error) }));
